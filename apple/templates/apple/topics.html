@@ -1,0 +1,23 @@
+{% extends "apple/base.html" %}
+
+
+{% block header %}
+    <h2>Topics</h2>
+{% endblock header %}
+
+
+{% block content %}
+    <ul>
+    {% for topic in topics %}
+    <li>
+        <h3>
+            <a href="{% url 'apple:topic' topic.id %}">{{ topic }}</a>
+        </h3>
+    </li>
+    {% empty %}
+        <li>No topics have been added yet.</li>
+    {% endfor %}
+    </ul>
+
+    <h3><a href="{% url 'apple:new_topic' %}">Add new topic</a></h3>
+{% endblock content %}

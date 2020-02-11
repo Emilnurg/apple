@@ -1,0 +1,24 @@
+{% extends "apple/base.html" %}
+{% load bootstrap3 %}
+
+{% block header %}
+    <h2>Edit entry:</h2>
+{% endblock header %}
+
+
+{% block content %}
+    <h3>
+        <a href="{% url 'apple:topic' topic.id %}">{{ topic }}</a>
+    </h3>
+
+
+    <form action="{% url 'apple:edit_entry' entry.id %}" method="post" class="form">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+
+        {% buttons %}
+            <button name="submit" class="btn btn-primary">edit entry</button>
+        {% endbuttons %}
+    </form>
+
+{% endblock content %}
